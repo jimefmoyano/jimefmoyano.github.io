@@ -1,0 +1,446 @@
+---
+title: ""
+format:
+  html:
+    page-layout: full
+    toc: false
+---
+
+```{=html}
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap');
+
+:root {
+  --bg: #0e0e0e;
+  --surface: #161616;
+  --border: #2a2a2a;
+  --accent: #c8f04a;
+  --accent2: #4af0c8;
+  --text: #e8e8e8;
+  --muted: #888;
+}
+
+body {
+  background: var(--bg) !important;
+  color: var(--text) !important;
+  font-family: 'IBM Plex Sans', sans-serif !important;
+  font-weight: 300;
+}
+
+#quarto-content, .quarto-container, main {
+  background: var(--bg) !important;
+  max-width: 100% !important;
+  padding: 0 !important;
+}
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 6rem 4rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -200px; right: -200px;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(200,240,74,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 5rem;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.hero-eyebrow {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--accent);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.hero-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 2rem;
+  height: 1px;
+  background: var(--accent);
+}
+
+.hero-name {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.8rem, 4.5vw, 4rem);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+  color: var(--text);
+}
+
+.hero-name em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.hero-desc {
+  color: var(--muted);
+  font-size: 1rem;
+  max-width: 440px;
+  margin-bottom: 2.5rem;
+  line-height: 1.9;
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.hero-links {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #0e0e0e !important;
+  padding: 0.75rem 1.6rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-decoration: none !important;
+  text-transform: uppercase;
+  transition: all 0.2s;
+  display: inline-block;
+}
+
+.btn-primary:hover {
+  background: #d9ff5a;
+  transform: translateY(-2px);
+}
+
+.btn-ghost {
+  border: 1px solid var(--border);
+  color: var(--muted) !important;
+  padding: 0.75rem 1.6rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-decoration: none !important;
+  text-transform: uppercase;
+  transition: all 0.2s;
+  display: inline-block;
+}
+
+.btn-ghost:hover {
+  border-color: var(--accent);
+  color: var(--accent) !important;
+}
+
+.stack-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.stack-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 1rem 1.25rem;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.stack-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.stack-card.highlight { border-color: rgba(200,240,74,0.3); }
+
+.stack-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.62rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.3rem;
+}
+
+.stack-name {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.stack-card.highlight .stack-name { color: var(--accent); }
+
+/* PROYECTOS */
+.section {
+  padding: 5rem 4rem;
+  border-top: 1px solid var(--border);
+}
+
+.section-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.section-header {
+  display: flex;
+  align-items: baseline;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 1.5rem;
+}
+
+.section-num {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: var(--text);
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.project-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 2rem;
+  transition: border-color 0.25s, transform 0.25s;
+  position: relative;
+  overflow: hidden;
+}
+
+.project-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 0; height: 2px;
+  background: var(--accent);
+  transition: width 0.3s ease;
+}
+
+.project-card:hover::after { width: 100%; }
+.project-card:hover {
+  border-color: #3a3a3a;
+  transform: translateY(-4px);
+}
+
+.project-cat {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.62rem;
+  color: var(--accent2);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 0.75rem;
+}
+
+.project-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin-bottom: 0.75rem;
+  color: var(--text);
+  line-height: 1.3;
+}
+
+.project-desc {
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin-bottom: 1.25rem;
+  line-height: 1.8;
+}
+
+.project-flow {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  padding: 0.65rem 0.9rem;
+  margin-bottom: 1.25rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--muted);
+  line-height: 1.9;
+}
+
+.project-flow span { color: var(--accent); }
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.tag {
+  background: #1e1e1e;
+  border: 1px solid var(--border);
+  padding: 0.2rem 0.55rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.62rem;
+  color: var(--muted);
+}
+
+.coming-soon {
+  opacity: 0.5;
+}
+
+/* ANIMACIONES */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-left > * {
+  animation: fadeUp 0.6s ease forwards;
+  opacity: 0;
+}
+.hero-left > *:nth-child(1) { animation-delay: 0.1s; }
+.hero-left > *:nth-child(2) { animation-delay: 0.2s; }
+.hero-left > *:nth-child(3) { animation-delay: 0.3s; }
+.hero-left > *:nth-child(4) { animation-delay: 0.45s; }
+
+.stack-card {
+  animation: fadeUp 0.5s ease forwards;
+  opacity: 0;
+}
+.stack-card:nth-child(1) { animation-delay: 0.3s; }
+.stack-card:nth-child(2) { animation-delay: 0.4s; }
+.stack-card:nth-child(3) { animation-delay: 0.5s; }
+.stack-card:nth-child(4) { animation-delay: 0.6s; }
+.stack-card:nth-child(5) { animation-delay: 0.7s; }
+.stack-card:nth-child(6) { animation-delay: 0.8s; }
+</style>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-grid">
+    <div class="hero-left">
+      <div class="hero-eyebrow">datos · automatizaciones · visualización</div>
+      <div class="hero-name">Jimena<br><em>Fernández Moyano</em></div>
+      <p class="hero-desc">
+        Analista de Datos · Automatizaciones & Visualización.<br>
+        Transformo datos en procesos automáticos, análisis y dashboards que tienen sentido.
+      </p>
+      <div class="hero-links">
+        <a href="#proyectos" class="btn-primary">Ver proyectos</a>
+        <a href="about.html" class="btn-ghost">CV & Publicaciones</a>
+        <a href="https://www.linkedin.com/in/jimena-fernandez-moyano/" target="_blank" class="btn-ghost">LinkedIn</a>
+        <a href="https://github.com/jimefmoyano" target="_blank" class="btn-ghost">GitHub</a>
+      </div>
+    </div>
+
+    <div class="stack-grid">
+      <div class="stack-card highlight">
+        <div class="stack-label">lenguajes</div>
+        <div class="stack-name">R · Python · SQL</div>
+      </div>
+      <div class="stack-card">
+        <div class="stack-label">automatización</div>
+        <div class="stack-name">Apps Script · Telegram API</div>
+      </div>
+      <div class="stack-card">
+        <div class="stack-label">visualización</div>
+        <div class="stack-name">Looker · Tableau · Shiny</div>
+      </div>
+      <div class="stack-card">
+        <div class="stack-label">datos</div>
+        <div class="stack-name">Google Sheets · BigQuery</div>
+      </div>
+      <div class="stack-card">
+        <div class="stack-label">apps</div>
+        <div class="stack-name">Shiny · Quarto</div>
+      </div>
+      <div class="stack-card">
+        <div class="stack-label">código</div>
+        <div class="stack-name">GitHub</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROYECTOS -->
+<div class="section" id="proyectos">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <span class="section-title">Proyectos</span>
+    </div>
+
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <div class="project-cat">automatización · personal</div>
+        <div class="project-title">Bot de registro de alimentación y actividad</div>
+        <p class="project-desc">
+          Bot de Telegram con flujo conversacional para registrar comidas y actividad física.
+          Las fotos se guardan en Drive y los datos en Google Sheets, con visualización en Looker Studio.
+        </p>
+        <div class="project-flow">
+          <span>Telegram</span> → Apps Script → Drive<br>
+          → Google Sheets → <span>Looker Studio</span>
+        </div>
+        <div class="tags">
+          <span class="tag">Google Apps Script</span>
+          <span class="tag">Telegram API</span>
+          <span class="tag">Google Sheets</span>
+          <span class="tag">Looker Studio</span>
+        </div>
+      </div>
+
+      <div class="project-card coming-soon">
+        <div class="project-cat">análisis · R</div>
+        <div class="project-title">Análisis en R — próximamente</div>
+        <p class="project-desc">
+          Proyectos de análisis de datos con R documentados en Quarto. Limpieza, modelado y visualización con código reproducible.
+        </p>
+        <div class="project-flow">
+          <span>R · tidyverse</span> → Quarto → <span>GitHub Pages</span>
+        </div>
+        <div class="tags">
+          <span class="tag">R</span>
+          <span class="tag">tidyverse</span>
+          <span class="tag">ggplot2</span>
+          <span class="tag">Quarto</span>
+        </div>
+      </div>
+
+      <div class="project-card coming-soon">
+        <div class="project-cat">app · shiny</div>
+        <div class="project-title">Shiny Apps — próximamente</div>
+        <p class="project-desc">
+          Aplicaciones interactivas en R/Shiny para exploración de datos con interfaz web.
+        </p>
+        <div class="project-flow">
+          <span>R · Shiny</span> → <span>shinyapps.io</span>
+        </div>
+        <div class="tags">
+          <span class="tag">R</span>
+          <span class="tag">Shiny</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+```
