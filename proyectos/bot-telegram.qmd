@@ -1,0 +1,500 @@
+---
+title: ""
+format:
+  html:
+    page-layout: full
+    toc: false
+---
+
+```{=html}
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap');
+
+:root {
+  --bg: #0e0e0e;
+  --surface: #161616;
+  --border: #2a2a2a;
+  --accent: #c8f04a;
+  --accent2: #4af0c8;
+  --text: #e8e8e8;
+  --muted: #888;
+}
+
+body {
+  background: var(--bg) !important;
+  color: var(--text) !important;
+  font-family: 'IBM Plex Sans', sans-serif !important;
+  font-weight: 300;
+}
+
+#quarto-content, .quarto-container, main {
+  background: var(--bg) !important;
+  max-width: 100% !important;
+  padding: 0 !important;
+}
+
+.project-hero {
+  padding: 7rem 4rem 4rem;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+
+.project-hero::before {
+  content: '';
+  position: absolute;
+  top: -200px; right: -100px;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(74,240,200,0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.back-link {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--muted);
+  text-decoration: none !important;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 2.5rem;
+  transition: color 0.2s;
+}
+
+.back-link:hover { color: var(--accent); }
+
+.project-eyebrow {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--accent2);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 1rem;
+}
+
+.project-hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 1.5rem;
+  color: var(--text);
+  max-width: 700px;
+}
+
+.project-hero h1 em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.project-summary {
+  color: var(--muted);
+  font-size: 1rem;
+  max-width: 600px;
+  line-height: 1.9;
+  margin-bottom: 2rem;
+}
+
+.hero-meta {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.meta-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.6rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.meta-value {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.8rem;
+  color: var(--accent);
+}
+
+.hero-btns {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #0e0e0e !important;
+  padding: 0.75rem 1.6rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-decoration: none !important;
+  text-transform: uppercase;
+  transition: all 0.2s;
+  display: inline-block;
+}
+
+.btn-primary:hover {
+  background: #d9ff5a;
+  transform: translateY(-2px);
+}
+
+.btn-ghost {
+  border: 1px solid var(--border);
+  color: var(--muted) !important;
+  padding: 0.75rem 1.6rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-decoration: none !important;
+  text-transform: uppercase;
+  transition: all 0.2s;
+  display: inline-block;
+}
+
+.btn-ghost:hover {
+  border-color: var(--accent);
+  color: var(--accent) !important;
+}
+
+/* CONTENIDO */
+.project-body {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 5rem 4rem;
+}
+
+.section-block {
+  margin-bottom: 4rem;
+}
+
+.block-title {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.block-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.block-text {
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.9;
+}
+
+/* FLUJO */
+.flow-diagram {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 2rem 2.5rem;
+  margin: 1.5rem 0;
+}
+
+.flow-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.5rem;
+}
+
+.flow-node {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  padding: 0.5rem 1rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.78rem;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.flow-node.accent {
+  border-color: rgba(200,240,74,0.4);
+  color: var(--accent);
+}
+
+.flow-node.accent2 {
+  border-color: rgba(74,240,200,0.4);
+  color: var(--accent2);
+}
+
+.flow-arrow {
+  font-family: 'IBM Plex Mono', monospace;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.flow-branch {
+  margin-left: 2rem;
+  border-left: 1px solid var(--border);
+  padding-left: 1.5rem;
+  margin-top: 0.75rem;
+}
+
+.flow-branch-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.flow-branch-item span { color: var(--accent2); }
+
+/* STACK TABLE */
+.stack-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+}
+
+.stack-table th {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-align: left;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.stack-table td {
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.88rem;
+  color: var(--text);
+}
+
+.stack-table td:first-child {
+  font-family: 'IBM Plex Mono', monospace;
+  color: var(--accent);
+  font-size: 0.82rem;
+}
+
+.stack-table tr:last-child td { border-bottom: none; }
+
+/* STEPS */
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.step {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.step-num {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--accent);
+  background: var(--surface);
+  border: 1px solid rgba(200,240,74,0.3);
+  padding: 0.3rem 0.6rem;
+  white-space: nowrap;
+  margin-top: 0.1rem;
+}
+
+.step-content {
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.step-content strong {
+  color: var(--text);
+  font-weight: 500;
+}
+
+/* TAGS */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.tag {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 0.3rem 0.7rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--muted);
+}
+</style>
+
+<!-- HERO -->
+<div class="project-hero">
+  <a href="../index.html" class="back-link">← Volver a proyectos</a>
+  <div class="project-eyebrow">automatización · personal</div>
+  <h1>Bot de registro de<br><em>alimentación y actividad</em></h1>
+  <p class="project-summary">
+    Bot de Telegram con flujo conversacional para registrar comidas y actividad física desde el celular. 
+    Todo se guarda automáticamente en Google Sheets con las fotos en Drive, 
+    y termina en un dashboard de Looker Studio.
+  </p>
+
+  <div class="hero-meta">
+    <div class="meta-item">
+      <span class="meta-label">tipo</span>
+      <span class="meta-value">Automatización personal</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">stack principal</span>
+      <span class="meta-value">Google Apps Script · Telegram API</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">estado</span>
+      <span class="meta-value">✓ En uso</span>
+    </div>
+  </div>
+
+  <div class="hero-btns">
+    <a href="https://github.com/jimefmoyano/telegram-food-bot" target="_blank" class="btn-primary">→ Ver código en GitHub</a>
+    <a href="#flujo" class="btn-ghost">Ver cómo funciona</a>
+  </div>
+</div>
+
+<!-- CUERPO -->
+<div class="project-body">
+
+  <!-- EL PROBLEMA -->
+  <div class="section-block">
+    <div class="block-title">el problema</div>
+    <p class="block-text">
+      Quería registrar lo que comía y mis caminatas de forma rápida, desde el celular, 
+      sin abrir planillas ni apps de nutrición. El flujo tenía que ser mínimo: 
+      mandarle un mensaje a un bot y que todo quedara guardado solo, con foto incluida.
+    </p>
+  </div>
+
+  <!-- FLUJO -->
+  <div class="section-block" id="flujo">
+    <div class="block-title">flujo del sistema</div>
+
+    <div class="flow-diagram">
+      <div class="flow-row">
+        <div class="flow-node accent">Usuario en Telegram</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-node">Webhook · Apps Script</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-node">¿Qué registramos?</div>
+      </div>
+
+      <div class="flow-branch">
+        <div class="flow-branch-item">
+          <span>Comida</span> → descripción + hora + foto → Drive + Sheets
+        </div>
+        <div class="flow-branch-item">
+          <span>Caminata</span> → pasos + tiempo + km → Sheets
+        </div>
+        <div class="flow-branch-item">
+          <span>Actividad</span> → nombre + rutina → Sheets
+        </div>
+      </div>
+
+      <div class="flow-row" style="margin-top:1rem;">
+        <div class="flow-node">Google Sheets</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-node accent2">Looker Studio</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STACK -->
+  <div class="section-block">
+    <div class="block-title">stack</div>
+    <table class="stack-table">
+      <thead>
+        <tr>
+          <th>Herramienta</th>
+          <th>Rol</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Telegram Bot API</td><td>Interfaz conversacional con el usuario</td></tr>
+        <tr><td>Google Apps Script</td><td>Backend y lógica del webhook</td></tr>
+        <tr><td>Google Drive</td><td>Almacenamiento de fotos</td></tr>
+        <tr><td>Google Sheets</td><td>Base de datos de registros</td></tr>
+        <tr><td>Looker Studio</td><td>Dashboard y visualización</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- CÓMO FUNCIONA -->
+  <div class="section-block">
+    <div class="block-title">cómo funciona la lógica</div>
+    <p class="block-text" style="margin-bottom:1.5rem;">
+      El bot mantiene el estado de cada conversación usando <code style="color:var(--accent);background:var(--surface);padding:0.1rem 0.4rem;font-size:0.82rem;">PropertiesService</code> 
+      de Google Apps Script, guardado por <code style="color:var(--accent);background:var(--surface);padding:0.1rem 0.4rem;font-size:0.82rem;">chatId</code>. 
+      El flujo avanza por pasos según el tipo de registro elegido.
+    </p>
+    <div class="steps">
+      <div class="step">
+        <span class="step-num">step 0→1</span>
+        <div class="step-content"><strong>Inicio</strong> — el bot pregunta qué tipo de registro querés hacer.</div>
+      </div>
+      <div class="step">
+        <span class="step-num">step 2→4</span>
+        <div class="step-content"><strong>Comida</strong> — descripción, hora y foto. La imagen se sube a Drive y se guarda el link directo en Sheets.</div>
+      </div>
+      <div class="step">
+        <span class="step-num">step 10→12</span>
+        <div class="step-content"><strong>Caminata</strong> — pasos, tiempo y kilómetros.</div>
+      </div>
+      <div class="step">
+        <span class="step-num">step 20→21</span>
+        <div class="step-content"><strong>Otra actividad</strong> — nombre de la actividad y descripción de la rutina.</div>
+      </div>
+    </div>
+    <p class="block-text" style="margin-top:1rem;">
+      Escribir <code style="color:var(--accent);background:var(--surface);padding:0.1rem 0.4rem;font-size:0.82rem;">reiniciar</code> o 
+      <code style="color:var(--accent);background:var(--surface);padding:0.1rem 0.4rem;font-size:0.82rem;">cancelar</code> en cualquier momento resetea el estado.
+    </p>
+  </div>
+
+  <!-- TAGS -->
+  <div class="section-block">
+    <div class="block-title">tecnologías</div>
+    <div class="tags">
+      <span class="tag">Google Apps Script</span>
+      <span class="tag">Telegram Bot API</span>
+      <span class="tag">Google Sheets</span>
+      <span class="tag">Google Drive</span>
+      <span class="tag">Looker Studio</span>
+      <span class="tag">JavaScript</span>
+      <span class="tag">Webhook</span>
+      <span class="tag">Automatización</span>
+    </div>
+  </div>
+
+</div>
+```
