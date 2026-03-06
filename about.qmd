@@ -1,5 +1,545 @@
 ---
-title: "About"
+title: ""
+format:
+  html:
+    page-layout: full
+    toc: false
 ---
 
-About this site
+```{=html}
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap');
+
+:root {
+  --bg: #0e0e0e;
+  --surface: #161616;
+  --border: #2a2a2a;
+  --accent: #c8f04a;
+  --accent2: #4af0c8;
+  --text: #e8e8e8;
+  --muted: #888;
+}
+
+body {
+  background: var(--bg) !important;
+  color: var(--text) !important;
+  font-family: 'IBM Plex Sans', sans-serif !important;
+  font-weight: 300;
+}
+
+#quarto-content, .quarto-container, main {
+  background: var(--bg) !important;
+  max-width: 100% !important;
+  padding: 0 !important;
+}
+
+/* HERO */
+.cv-hero {
+  padding: 7rem 4rem 4rem;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+
+.cv-hero::before {
+  content: '';
+  position: absolute;
+  top: -200px; left: -100px;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(200,240,74,0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.cv-eyebrow {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 1rem;
+}
+
+.cv-hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 0.5rem;
+  color: var(--text);
+}
+
+.cv-hero h1 em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.cv-role {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.85rem;
+  color: var(--accent2);
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.05em;
+}
+
+.cv-bio {
+  color: var(--muted);
+  font-size: 0.95rem;
+  max-width: 680px;
+  line-height: 1.9;
+  margin-bottom: 2rem;
+}
+
+.cv-bio strong {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.cv-links {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #0e0e0e !important;
+  padding: 0.75rem 1.6rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-decoration: none !important;
+  text-transform: uppercase;
+  transition: all 0.2s;
+  display: inline-block;
+}
+
+.btn-primary:hover {
+  background: #d9ff5a;
+  transform: translateY(-2px);
+}
+
+.btn-ghost {
+  border: 1px solid var(--border);
+  color: var(--muted) !important;
+  padding: 0.75rem 1.6rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-decoration: none !important;
+  text-transform: uppercase;
+  transition: all 0.2s;
+  display: inline-block;
+}
+
+.btn-ghost:hover {
+  border-color: var(--accent);
+  color: var(--accent) !important;
+}
+
+/* BODY */
+.cv-body {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 5rem 4rem;
+}
+
+.cv-section {
+  margin-bottom: 5rem;
+}
+
+.section-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* EXPERIENCIA */
+.exp-item {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 2.5rem;
+  margin-bottom: 3rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.exp-item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.exp-meta {
+  padding-top: 0.2rem;
+}
+
+.exp-period {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--accent);
+  margin-bottom: 0.4rem;
+  line-height: 1.5;
+}
+
+.exp-company {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.exp-role {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: var(--text);
+  margin-bottom: 0.75rem;
+  line-height: 1.3;
+}
+
+.exp-desc {
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.85;
+  margin-bottom: 1rem;
+}
+
+.exp-desc strong {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.exp-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.tag {
+  background: #1a1a1a;
+  border: 1px solid var(--border);
+  padding: 0.2rem 0.55rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.62rem;
+  color: var(--muted);
+}
+
+.tag.highlight {
+  border-color: rgba(200,240,74,0.3);
+  color: var(--accent);
+}
+
+/* STACK GRID */
+.stack-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+
+.stack-item {
+  background: var(--surface);
+  padding: 1.25rem 1.5rem;
+  transition: background 0.2s;
+}
+
+.stack-item:hover { background: #1c1c1c; }
+
+.stack-item-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.6rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.4rem;
+}
+
+.stack-item-value {
+  font-size: 0.88rem;
+  color: var(--text);
+  line-height: 1.5;
+}
+
+/* FORMACION */
+.edu-item {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 2.5rem;
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.edu-item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.edu-period {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--accent);
+  padding-top: 0.2rem;
+}
+
+.edu-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--text);
+  margin-bottom: 0.3rem;
+}
+
+.edu-inst {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.cv-hero > * {
+  animation: fadeUp 0.5s ease forwards;
+  opacity: 0;
+}
+.cv-hero > *:nth-child(1) { animation-delay: 0.1s; }
+.cv-hero > *:nth-child(2) { animation-delay: 0.2s; }
+.cv-hero > *:nth-child(3) { animation-delay: 0.3s; }
+.cv-hero > *:nth-child(4) { animation-delay: 0.4s; }
+.cv-hero > *:nth-child(5) { animation-delay: 0.5s; }
+</style>
+
+<!-- HERO -->
+<div class="cv-hero">
+  <div class="cv-eyebrow">CV & Publicaciones</div>
+  <h1>Jimena<br><em>Fernández Moyano</em></h1>
+  <div class="cv-role">Senior Data & Reporting Analyst · Automatizaciones & Visualización</div>
+  <p class="cv-bio">
+    Trabajo con datos desde hace casi una década, en contextos muy distintos: 
+    <strong>estadística pública, política social y sector privado</strong>. 
+    Eso me dio una mirada que va más allá del dato — entiendo el problema antes de escribir la primera línea de código.
+    Combino formación en sociología con herramientas técnicas para construir soluciones que tienen sentido 
+    para quien las usa: automatizaciones que eliminan trabajo manual, dashboards que cuentan algo, 
+    análisis que derivan en decisiones concretas.
+    He trabajado con equipos de <strong>CEPAL, BID y CEA</strong>, 
+    y actualmente gestiono datos para BBVA desde Accenture.
+  </p>
+  <div class="cv-links">
+    <a href="mailto:jimena.fernandez.moyano@gmail.com" class="btn-primary">→ Contacto</a>
+    <a href="https://www.linkedin.com/in/jimena-fernandez-moyano/" target="_blank" class="btn-ghost">LinkedIn</a>
+    <a href="https://github.com/jimefmoyano" target="_blank" class="btn-ghost">GitHub</a>
+  </div>
+</div>
+
+<!-- CUERPO -->
+<div class="cv-body">
+
+  <!-- STACK -->
+  <div class="cv-section">
+    <div class="section-label">stack</div>
+    <div class="stack-section">
+      <div class="stack-item">
+        <div class="stack-item-label">lenguajes</div>
+        <div class="stack-item-value">R · SQL · JavaScript</div>
+      </div>
+      <div class="stack-item">
+        <div class="stack-item-label">automatización</div>
+        <div class="stack-item-value">Google Apps Script · Power Query</div>
+      </div>
+      <div class="stack-item">
+        <div class="stack-item-label">visualización</div>
+        <div class="stack-item-value">Looker Studio · Shiny · Tableau</div>
+      </div>
+      <div class="stack-item">
+        <div class="stack-item-label">datos</div>
+        <div class="stack-item-value">Google Sheets · ETL · Cornerstone</div>
+      </div>
+      <div class="stack-item">
+        <div class="stack-item-label">otras herramientas</div>
+        <div class="stack-item-value">Quarto · Git · GitHub</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXPERIENCIA -->
+  <div class="cv-section">
+    <div class="section-label">experiencia</div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-period">may. 2024<br>actualidad</div>
+        <div class="exp-company">Accenture</div>
+      </div>
+      <div>
+        <div class="exp-role">Senior Data & Reporting Analyst</div>
+        <p class="exp-desc">
+          Gestión y automatización de datos para <strong>BBVA</strong> en proyectos de Learning & Performance. 
+          Diseño procesos ETL para integrar datos desde Cornerstone y fuentes internas, 
+          estandarizo datasets y automatizo reportes que antes se hacían a mano. 
+          Desarrollo dashboards en Looker Studio para el seguimiento de KPIs y tendencias de desempeño, 
+          y genero análisis que los equipos de negocio usan para tomar decisiones.
+        </p>
+        <div class="exp-tags">
+          <span class="tag highlight">R</span>
+          <span class="tag highlight">Google Apps Script</span>
+          <span class="tag highlight">Looker Studio</span>
+          <span class="tag">Power Query</span>
+          <span class="tag">ETL</span>
+          <span class="tag">Google Sheets</span>
+          <span class="tag">Cornerstone</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-period">feb. 2023<br>may. 2024</div>
+        <div class="exp-company">INDEC Argentina</div>
+      </div>
+      <div>
+        <div class="exp-role">Analista de Estadísticas Sociodemográficas</div>
+        <p class="exp-desc">
+          Procesé y analicé datos de encuestas y registros administrativos para producir estadísticas públicas de calidad. 
+          Desarrollé aplicaciones <strong>Shiny en R</strong> para visualizar indicadores sociodemográficos 
+          y facilitar el acceso público a los datos. 
+          Elaboré dashboards, informes analíticos y documentos técnicos sobre tendencias sociales y demográficas.
+        </p>
+        <div class="exp-tags">
+          <span class="tag highlight">R</span>
+          <span class="tag highlight">R Shiny</span>
+          <span class="tag">Estadística</span>
+          <span class="tag">Encuestas</span>
+          <span class="tag">Datos administrativos</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-period">ago. 2022<br>feb. 2023</div>
+        <div class="exp-company">Ministerio de Obras Públicas</div>
+      </div>
+      <div>
+        <div class="exp-role">Coordinadora de Datos — Dirección Nacional de Transparencia</div>
+        <p class="exp-desc">
+          Coordiné iniciativas de análisis de datos para mejorar la eficiencia de proyectos de obra pública. 
+          Estandaricé indicadores de desempeño incorporando variables sociodemográficas 
+          y desarrollé un <strong>geoportal con indicadores multilayer</strong> sobre infraestructura, 
+          ambiente y datos sociales. Colaboré con <strong>BID y CEPAL</strong> en estrategias de inversión pública 
+          y contribuí a políticas de datos abiertos.
+        </p>
+        <div class="exp-tags">
+          <span class="tag highlight">R</span>
+          <span class="tag">Geoportal</span>
+          <span class="tag">Datos abiertos</span>
+          <span class="tag">BID</span>
+          <span class="tag">CEPAL</span>
+          <span class="tag">Indicadores</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-period">feb. 2021<br>ago. 2022</div>
+        <div class="exp-company">INDEC Argentina</div>
+      </div>
+      <div>
+        <div class="exp-role">Analista de Estadísticas Sociodemográficas</div>
+        <p class="exp-desc">
+          Desarrollé aplicaciones Shiny para visualización de indicadores de bienestar 
+          y generé series temporales e indicadores comparativos a partir de encuestas y registros administrativos. 
+          Contribuí a las discusiones metodológicas del <strong>Censo Nacional 2022</strong> 
+          y estandaricé indicadores de bienestar a nivel regional en colaboración con <strong>CEPAL</strong>.
+        </p>
+        <div class="exp-tags">
+          <span class="tag highlight">R</span>
+          <span class="tag highlight">R Shiny</span>
+          <span class="tag">CEPAL</span>
+          <span class="tag">Censo 2022</span>
+          <span class="tag">Indicadores de bienestar</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-period">jun. 2018<br>feb. 2021</div>
+        <div class="exp-company">Instituto de Vivienda de la Ciudad de Buenos Aires</div>
+      </div>
+      <div>
+        <div class="exp-role">Asesora Técnica</div>
+        <p class="exp-desc">
+          Coordinación en proyectos de escrituración de viviendas sociales y producción de estadísticas institucionales.
+        </p>
+        <div class="exp-tags">
+          <span class="tag">Estadística</span>
+          <span class="tag">Vivienda social</span>
+          <span class="tag">R</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-period">sept. 2016<br>jun. 2018</div>
+        <div class="exp-company">Market One</div>
+      </div>
+      <div>
+        <div class="exp-role">Coordinadora de Campo</div>
+        <p class="exp-desc">
+          Coordinación de encuestadores en relevamientos de investigación de mercado de consumo masivo. 
+          Reclutamiento, capacitación y coaching del equipo. 
+          Auditoría y corrección de la información relevada.
+        </p>
+        <div class="exp-tags">
+          <span class="tag">Investigación de mercado</span>
+          <span class="tag">Coordinación de equipos</span>
+          <span class="tag">Auditoría de datos</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FORMACION -->
+  <div class="cv-section">
+    <div class="section-label">formación</div>
+
+    <div class="edu-item">
+      <div class="edu-period">UBA</div>
+      <div>
+        <div class="edu-title">Licenciatura en Sociología</div>
+        <div class="edu-inst">Universidad de Buenos Aires · Facultad de Ciencias Sociales</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- PUBLICACIONES -->
+  <div class="cv-section">
+    <div class="section-label">publicaciones & trabajos técnicos</div>
+    <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.9;">
+      Próximamente — trabajos publicados en INDEC, Ministerio de Obras Públicas y organismos internacionales.
+    </p>
+  </div>
+
+</div>
+```
